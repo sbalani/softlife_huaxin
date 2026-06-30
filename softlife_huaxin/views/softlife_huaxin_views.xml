@@ -10,7 +10,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//header" position="inside">
                     <button name="action_sync_from_huaxin" string="Sync from Huaxin" type="object"
-                            class="btn-secondary" attrs="{'invisible': [('device_imei','=',False)]}"/>
+                            class="btn-secondary" invisible="not device_imei"/>
                 </xpath>
                 <xpath expr="//div[@name='button_box']" position="inside">
                     <button name="action_open_temperatures" type="object"
@@ -29,31 +29,31 @@
                 <xpath expr="//page[@name='transfers']" position="after">
                     <page string="Temperatures (Huaxin)" name="huaxin_temps">
                         <field name="temperature_ids">
-                            <tree>
+                            <list>
                                 <field name="reading_time"/>
                                 <field name="series_name"/>
                                 <field name="value"/>
-                            </tree>
+                            </list>
                         </field>
                     </page>
                     <page string="Orders (Huaxin)" name="huaxin_orders">
                         <field name="huaxin_order_ids">
-                            <tree>
+                            <list>
                                 <field name="order_time"/>
                                 <field name="order_code"/>
                                 <field name="order_state"/>
                                 <field name="price"/>
                                 <field name="product_name"/>
-                            </tree>
+                            </list>
                         </field>
                     </page>
                     <page string="Faults / Alerts (Huaxin)" name="huaxin_faults">
                         <field name="fault_ids">
-                            <tree>
+                            <list>
                                 <field name="received_at"/>
                                 <field name="subject"/>
                                 <field name="state"/>
-                            </tree>
+                            </list>
                         </field>
                     </page>
                 </xpath>
@@ -61,16 +61,16 @@
         </record>
 
         <!-- ===== Temperatures ===== -->
-        <record id="view_huaxin_temperature_tree" model="ir.ui.view">
-            <field name="name">softlife.huaxin.temperature.tree</field>
+        <record id="view_huaxin_temperature_list" model="ir.ui.view">
+            <field name="name">softlife.huaxin.temperature.list</field>
             <field name="model">softlife.huaxin.temperature</field>
             <field name="arch" type="xml">
-                <tree>
+                <list>
                     <field name="machine_id"/>
                     <field name="reading_time"/>
                     <field name="series_name"/>
                     <field name="value"/>
-                </tree>
+                </list>
             </field>
         </record>
         <record id="view_huaxin_temperature_graph" model="ir.ui.view">
@@ -86,47 +86,47 @@
         <record id="action_huaxin_temperature" model="ir.actions.act_window">
             <field name="name">Temperatures</field>
             <field name="res_model">softlife.huaxin.temperature</field>
-            <field name="view_mode">tree,graph</field>
+            <field name="view_mode">list,graph</field>
         </record>
 
         <!-- ===== Orders ===== -->
-        <record id="view_huaxin_order_tree" model="ir.ui.view">
-            <field name="name">softlife.huaxin.order.tree</field>
+        <record id="view_huaxin_order_list" model="ir.ui.view">
+            <field name="name">softlife.huaxin.order.list</field>
             <field name="model">softlife.huaxin.order</field>
             <field name="arch" type="xml">
-                <tree>
+                <list>
                     <field name="order_time"/>
                     <field name="machine_id"/>
                     <field name="order_code"/>
                     <field name="order_state"/>
                     <field name="price"/>
                     <field name="product_name"/>
-                </tree>
+                </list>
             </field>
         </record>
         <record id="action_huaxin_order" model="ir.actions.act_window">
             <field name="name">Machine Orders</field>
             <field name="res_model">softlife.huaxin.order</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
         </record>
 
         <!-- ===== Faults ===== -->
-        <record id="view_huaxin_fault_tree" model="ir.ui.view">
-            <field name="name">softlife.huaxin.fault.tree</field>
+        <record id="view_huaxin_fault_list" model="ir.ui.view">
+            <field name="name">softlife.huaxin.fault.list</field>
             <field name="model">softlife.huaxin.fault</field>
             <field name="arch" type="xml">
-                <tree decoration-danger="state == 'new'" decoration-warning="state == 'acknowledged'">
+                <list decoration-danger="state == 'new'" decoration-warning="state == 'acknowledged'">
                     <field name="received_at"/>
                     <field name="machine_id"/>
                     <field name="subject"/>
                     <field name="state" widget="badge"/>
-                </tree>
+                </list>
             </field>
         </record>
         <record id="action_huaxin_fault" model="ir.actions.act_window">
             <field name="name">Faults / Alerts</field>
             <field name="res_model">softlife.huaxin.fault</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
         </record>
 
     </data>

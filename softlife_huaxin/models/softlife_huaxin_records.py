@@ -33,7 +33,7 @@ class SoftlifeMachine(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window', 'name': 'Temperatures',
-            'res_model': 'softlife.huaxin.temperature', 'view_mode': 'tree,graph',
+            'res_model': 'softlife.huaxin.temperature', 'view_mode': 'list,graph',
             'domain': [('machine_id', '=', self.id)],
             'context': {'default_machine_id': self.id},
         }
@@ -42,7 +42,7 @@ class SoftlifeMachine(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window', 'name': 'Machine Orders',
-            'res_model': 'softlife.huaxin.order', 'view_mode': 'tree,form',
+            'res_model': 'softlife.huaxin.order', 'view_mode': 'list,form',
             'domain': [('machine_id', '=', self.id)],
             'context': {'default_machine_id': self.id},
         }
@@ -51,7 +51,7 @@ class SoftlifeMachine(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window', 'name': 'Faults / Alerts',
-            'res_model': 'softlife.huaxin.fault', 'view_mode': 'tree,form',
+            'res_model': 'softlife.huaxin.fault', 'view_mode': 'list,form',
             'domain': [('machine_id', '=', self.id)],
             'context': {'default_machine_id': self.id},
         }
