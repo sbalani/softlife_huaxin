@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- ===== Machine form: Huaxin telemetry tabs + stat buttons + sync ===== -->
+        <record id="view_machine_form_huaxin" model="ir.ui.view">
+            <field name="name">softlife.machine.form.huaxin</field>
+            <field name="model">softlife.machine</field>
+            <field name="inherit_id" ref="softlife_machine.view_softlife_machine_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="action_sync_from_huaxin" string="Sync from Huaxin" type="object"
+                            class="btn-secondary" attrs="{'invisible': [('device_imei','=',False)]}"/>
+                </xpath>
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="action_open_temperatures" type="object"
+                            class="oe_stat_button" icon="fa-thermometer-half">
+                        <field name="temperature_count" widget="statinfo" string="Temps"/>
+                    </button>
+                    <button name="action_open_orders" type="object"
+                            class="oe_stat_button" icon="fa-shopping-cart">
+                        <field name="order_count" widget="statinfo" string="Orders"/>
+                    </button>
+                    <button name="action_open_faults" type="object"
+                            class="oe_stat_button" icon="fa-warning">
+                        <field name="open_fault_count" widget="statinfo" string="Alerts"/>
+                    </button>
+                </xpath>
+                <xpath expr="//page[@name='transfers']" position="after">
+                    <page string="Temperatures (Huaxin)" name="huaxin_temps">
+                        <field name="temperature_ids">
+                            <tree>
+                                <field name="reading_time"/>
+                                <field name="series_name"/>
+                                <field name="value"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Orders (Huaxin)" name="huaxin_orders">
+                        <field name="huaxin_order_ids">
+                            <tree>
+                                <field name="order_time"/>
+                                <field name="order_code"/>
+                                <field name="order_state"/>
+                                <field name="price"/>
+                                <field name="product_name"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Faults / Alerts (Huaxin)" name="huaxin_faults">
+                        <field name="fault_ids">
+                            <tree>
+                                <field name="received_at"/>
+                                <field name="subject"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- ===== Temperatures ===== -->
+        <record id="view_huaxin_temperature_tree" model="ir.ui.view">
+            <field name="name">softlife.huaxin.temperature.tree</field>
+            <field name="model">softlife.huaxin.temperature</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="machine_id"/>
+                    <field name="reading_time"/>
+                    <field name="series_name"/>
+                    <field name="value"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_huaxin_temperature_graph" model="ir.ui.view">
+            <field name="name">softlife.huaxin.temperature.graph</field>
+            <field name="model">softlife.huaxin.temperature</field>
+            <field name="arch" type="xml">
+                <graph type="line">
+                    <field name="reading_time" interval="hour" type="row"/>
+                    <field name="value" type="measure"/>
+                </graph>
+            </field>
+        </record>
+        <record id="action_huaxin_temperature" model="ir.actions.act_window">
+            <field name="name">Temperatures</field>
+            <field name="res_model">softlife.huaxin.temperature</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+
+        <!-- ===== Orders ===== -->
+        <record id="view_huaxin_order_tree" model="ir.ui.view">
+            <field name="name">softlife.huaxin.order.tree</field>
+            <field name="model">softlife.huaxin.order</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="order_time"/>
+                    <field name="machine_id"/>
+                    <field name="order_code"/>
+                    <field name="order_state"/>
+                    <field name="price"/>
+                    <field name="product_name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_huaxin_order" model="ir.actions.act_window">
+            <field name="name">Machine Orders</field>
+            <field name="res_model">softlife.huaxin.order</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- ===== Faults ===== -->
+        <record id="view_huaxin_fault_tree" model="ir.ui.view">
+            <field name="name">softlife.huaxin.fault.tree</field>
+            <field name="model">softlife.huaxin.fault</field>
+            <field name="arch" type="xml">
+                <tree decoration-danger="state == 'new'" decoration-warning="state == 'acknowledged'">
+                    <field name="received_at"/>
+                    <field name="machine_id"/>
+                    <field name="subject"/>
+                    <field name="state" widget="badge"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_huaxin_fault" model="ir.actions.act_window">
+            <field name="name">Faults / Alerts</field>
+            <field name="res_model">softlife.huaxin.fault</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_softlife_huaxin" name="Huaxin"
+                  parent="softlife_machine.menu_softlife_root" sequence="30"/>
+
+        <menuitem id="menu_softlife_huaxin_temps" name="Temperatures"
+                  parent="menu_softlife_huaxin" sequence="10"
+                  action="action_huaxin_temperature"/>
+        <menuitem id="menu_softlife_huaxin_orders" name="Machine Orders"
+                  parent="menu_softlife_huaxin" sequence="20"
+                  action="action_huaxin_order"/>
+        <menuitem id="menu_softlife_huaxin_faults" name="Faults / Alerts"
+                  parent="menu_softlife_huaxin" sequence="30"
+                  action="action_huaxin_fault"/>
+    </data>
+</odoo>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form_huaxin" model="ir.ui.view">
+            <field name="name">res.config.settings.form.huaxin</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="inside">
+                    <app data-string="Huaxin" string="Huaxin" name="huaxin">
+                        <block title="Huaxin Cloud Credentials" name="huaxin_credentials">
+                            <setting id="huaxin_is_stub_setting" string="Status" help="Stub mode returns demo data until Huaxin issues credentials.">
+                                <field name="huaxin_is_stub" readonly="1"/>
+                            </setting>
+                            <setting id="huaxin_base_url" string="Cloud Base URL">
+                                <field name="huaxin_base_url"/>
+                            </setting>
+                            <setting id="huaxin_mch_id" string="Merchant ID">
+                                <field name="huaxin_mch_id"/>
+                            </setting>
+                            <setting id="huaxin_mch_secret" string="Merchant Secret">
+                                <field name="huaxin_mch_secret"/>
+                            </setting>
+                            <setting id="huaxin_sign" string="Sign" help="Static sign value issued by Huaxin.">
+                                <field name="huaxin_sign"/>
+                            </setting>
+                            <setting id="huaxin_nonce_str" string="Nonce (nonce_str)">
+                                <field name="huaxin_nonce_str"/>
+                            </setting>
+                            <setting id="huaxin_time_stamp" string="Timestamp (time_Stamp)">
+                                <field name="huaxin_time_stamp"/>
+                            </setting>
+                        </block>
+                        <block title="Webhooks &amp; Time" name="huaxin_webhooks">
+                            <setting id="huaxin_notify_url" string="Webhook URL (notify_url)">
+                                <field name="huaxin_notify_url"/>
+                            </setting>
+                            <setting id="huaxin_notify_token" string="Webhook Shared Token">
+                                <field name="huaxin_notify_token"/>
+                            </setting>
+                            <setting id="huaxin_source_tz" string="Source Timezone">
+                                <field name="huaxin_source_tz"/>
+                            </setting>
+                            <setting id="huaxin_display_tz" string="Display Timezone">
+                                <field name="huaxin_display_tz"/>
+                            </setting>
+                            <setting id="huaxin_verify_ssl" string="Verify SSL"
+                                     help="Turn OFF only for UAT (its certificate is currently expired).">
+                                <field name="huaxin_verify_ssl"/>
+                            </setting>
+                        </block>
+                    </app>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

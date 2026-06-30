@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="default_base_url" model="ir.config_parameter">
+            <field name="key">softlife.huaxin.base_url</field>
+            <field name="value">https://uatapi.huaxinvending.com</field>
+        </record>
+        <record id="default_verify_ssl" model="ir.config_parameter">
+            <field name="key">softlife.huaxin.verify_ssl</field>
+            <field name="value">True</field>
+        </record>
+        <record id="default_notify_url" model="ir.config_parameter">
+            <field name="key">softlife.huaxin.notify_url</field>
+            <field name="value">https://test-amarvida.cloudpepper.site/huaxin/notify</field>
+        </record>
+        <record id="default_source_tz" model="ir.config_parameter">
+            <field name="key">softlife.huaxin.source_tz</field>
+            <field name="value">Asia/Shanghai</field>
+        </record>
+        <record id="default_display_tz" model="ir.config_parameter">
+            <field name="key">softlife.huaxin.display_tz</field>
+            <field name="value">Europe/Madrid</field>
+        </record>
+    </data>
+</odoo>
