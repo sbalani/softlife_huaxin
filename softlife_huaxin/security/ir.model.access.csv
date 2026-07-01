@@ -1,9 +1,9 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_softlife_huaxin_client,softlife.huaxin.client,model_softlife_huaxin_client,group_softlife_machine_user,1,1,1,1
+access_softlife_huaxin_client,softlife.huaxin.client,model_softlife_huaxin_client,softlife_machine.group_softlife_machine_user,1,1,1,1
 access_softlife_huaxin_client_admin,softlife.huaxin.client admin,model_softlife_huaxin_client,base.group_system,1,1,1,1
-access_softlife_huaxin_temperature_user,softlife.huaxin.temperature user,model_softlife_huaxin_temperature,group_softlife_machine_user,1,1,1,1
+access_softlife_huaxin_temperature_user,softlife.huaxin.temperature user,model_softlife_huaxin_temperature,softlife_machine.group_softlife_machine_user,1,1,1,1
 access_softlife_huaxin_temperature_admin,softlife.huaxin.temperature admin,model_softlife_huaxin_temperature,base.group_system,1,1,1,1
-access_softlife_huaxin_order_user,softlife.huaxin.order user,model_softlife_huaxin_order,group_softlife_machine_user,1,1,1,1
+access_softlife_huaxin_order_user,softlife.huaxin.order user,model_softlife_huaxin_order,softlife_machine.group_softlife_machine_user,1,1,1,1
 access_softlife_huaxin_order_admin,softlife.huaxin.order admin,model_softlife_huaxin_order,base.group_system,1,1,1,1
-access_softlife_huaxin_fault_user,softlife.huaxin.fault user,model_softlife_huaxin_fault,group_softlife_machine_user,1,1,1,1
+access_softlife_huaxin_fault_user,softlife.huaxin.fault user,model_softlife_huaxin_fault,softlife_machine.group_softlife_machine_user,1,1,1,1
 access_softlife_huaxin_fault_admin,softlife.huaxin.fault admin,model_softlife_huaxin_fault,base.group_system,1,1,1,1
